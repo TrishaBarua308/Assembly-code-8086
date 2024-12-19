@@ -14,25 +14,20 @@ main proc
     mov dl,13
     int 21h
     
-    mov cl,'1'
-    
     for:
-    cmp cl,bl    ; cl<bl
-    jg exit:     ; jump if greater
+    cmp bl,'0'
+    je exit:
     
     mov ah,2
-    mov dl,cl
+    mov dl,bl
     int 21h
     
-    inc cl       ; increment 1
-    
-                 ; and also printing this value in ascending order
-                 
-                 
+    dec bl
     jmp for:
+    
     
     exit:
     mov ah,4ch
     int 21h
     main endp
-end main
+end main       
